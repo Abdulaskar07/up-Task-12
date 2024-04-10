@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Armstrong</title>
+    <Style>
+        .container{
+            margin: auto;
+            background-color: cadetblue;
+            width: 20vw;
+            color: white;
+            padding: 20px;
+            overflow: hidden;
+
+        }
+        input{
+            border: none;
+            width: 17vw;
+            padding: 10px;
+            font-weight:600;
+            font-size: medium;
+        }
+        .output{
+            width: 17vw;
+            height: 5vh;
+            color: black;
+            background-color: white;
+            border-radius: 10px;
+            padding: 0px 20px;
+            display: flex;
+            align-items: center;
+            font-weight: 600;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+        button{
+            border: none;
+            width: 100%;
+            height: 5vh;
+            font-size: larger;
+            background-color: black;
+            color: white;
+            font-weight: 700;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px 0px white;
+        }
+    </Style>
+</head>
+<body>
+    <div class="container">
+        <h1>Armstrong Number</h1>
+        <input type="text" placeholder="Enter the Number" id="input">
+        <div>
+            <h2>Sum of the numbers:</h2>
+            <p id="sum" class="output"></p>
+        </div>
+        <div>
+            <h2>It is Armstrong:</h2>
+            <p id="armstrong" class="output"></p>
+        </div>
+        <div>
+            <h2>It is prime number</h2>
+            <p id="prime" class="output"></p>
+        </div>
+        <div>
+            <h2>Factors:</h2>
+            <p id="factors" class="output"></p>
+        </div>
+        <Button onclick="Find()">Check It</Button>
+    </div>
+
+    <Script>
+            var sum = document.getElementById("sum")
+            var arm = document.getElementById("armstrong")
+            var prime = document.getElementById("prime")
+            var factors = document.getElementById("factors");
+        function Find(){
+            var input = document.getElementById("input").value;
+            sum.innerText=Sum(input);
+            arm.innerText=Armstrong(input);
+            prime.innerText = Prime(input);
+           factors.innerText= Factors(input);
+        }
+        var sumtemp =0;
+        var armstemp =0;
+        var factor=[];
+        var output = ""
+        function Sum(x){
+            var array = x.split("");
+            for(i in array){
+                sumtemp+=parseInt(array[i]);
+            }
+            return sumtemp;
+        }
+        function Armstrong(x){
+            var array = x.split("");
+            for(i in array){
+            armstemp+=(Math.pow(parseInt(array[i]),3));
+            }
+            if(parseInt(x)===armstemp){
+                return "Yes";
+            }else{
+                return "No";
+            }
+        }
+        function Prime(x){
+            var temp =0;
+            for(let i=1;i<=parseInt(x);i++){
+                if(parseInt(x)/i===0){
+                    temp++;
+                }
+            }
+            if(temp===2){
+                return "Yes";
+            }else{
+                return "No";
+            }
+        }
+        function Factors(x){
+            
+            for(let i = 1;i<=parseInt(x);i++){
+                if(parseInt(x)%i===0){
+                    factor.push(i);
+                }
+            }
+            // factor.forEach(element => {
+            //     output+= element+" ";   
+            // });
+            return factor;
+            
+        }
+    </Script>
+    
+</body>
+</html>
